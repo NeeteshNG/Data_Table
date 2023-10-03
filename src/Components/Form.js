@@ -1,7 +1,8 @@
-import React from "react";
+import React, {Component} from "react";
 
-
-const Form = ({newData, handleChange, handleSubmit, handleCloseClick}) => {
+class Form extends Component{
+    render () {
+    const {newData, handleChange, handleSubmit} = this.props;
     return (
         <div className="modal-overlay">
           <form id="formStyle" onSubmit={handleSubmit}>
@@ -44,6 +45,7 @@ const Form = ({newData, handleChange, handleSubmit, handleCloseClick}) => {
           </form>
         </div>
     );
+}
 }
 
 export default Form;

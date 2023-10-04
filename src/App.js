@@ -4,10 +4,7 @@ import Table from "./Components/Table";
 import Form from "./Components/Form";
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
+  state = {
       fullData: [
         { id: 1, name: "Neetesh", age: "22", city: "Ashokanagar", gender: "Male" },
         { id: 2, name: "Akash", age: "25", city: "Bhopal", gender: "Male" },
@@ -17,8 +14,7 @@ class App extends Component {
       isTableVisible: false,
       newData: { id: null, name: "", age: "", city: "", gender: "" },
     };
-  }
-
+  
   handleAddClick = () => {
     this.setState({
       isPopupVisible: true,

@@ -53,6 +53,34 @@ class App extends Component {
     });
   };
 
+  handleSortAscClick = () => {
+    const numAscending = [...this.state.fullData].sort((a, b) => a.id - b.id);
+    this.setState({
+      fullData: numAscending,
+    });
+  }
+
+  handleSortDescClick = () => {
+    const numDescending = [...this.state.fullData].sort((a, b) => b.id - a.id);
+    this.setState({
+      fullData: numDescending,
+    });
+  }
+
+  handleSortStrAscClick = () => {
+    const strAscending = [...this.state.fullData].sort((a, b) => a.name > b.name ? 1 : -1,);
+    this.setState({
+      fullData: strAscending,
+    });
+  }
+
+  handleSortStrDescClick = () => {
+    const strDescending = [...this.state.fullData].sort((a, b) => a.name > b.name ? -1 : 1,);
+    this.setState({
+      fullData: strDescending,
+    });
+  }
+
   handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -101,6 +129,10 @@ class App extends Component {
               fullData={fullData}
               handleDeleteClick={this.handleDeleteClick}
               handleEditClick={this.handleEditClick}
+              handleSortAscClick={this.handleSortAscClick}
+              handleSortDescClick={this.handleSortDescClick}
+              handleSortStrAscClick={this.handleSortStrAscClick}
+              handleSortStrDescClick={this.handleSortStrDescClick}
             />
           </>
         )}

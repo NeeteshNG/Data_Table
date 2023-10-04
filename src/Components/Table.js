@@ -2,7 +2,7 @@ import React, {Component} from "react";
 
 class Table extends Component{
     render() {
-        const {fullData, handleDeleteClick, handleEditClick} = this.props;
+        const {fullData, handleDeleteClick, handleEditClick, handleSortAscClick, handleSortDescClick, handleSortStrAscClick, handleSortStrDescClick} = this.props;
 
         const tableOfItems = [...fullData].map((person, index) => (
             <tr key={index}>
@@ -17,18 +17,38 @@ class Table extends Component{
               </td>
             </tr>
           ));
-    
+        
         return (
           <>  
           <div id="tableContainer">
             <table>
               <thead>
                 <tr>
-                  <td>ID</td>
-                  <td>Name</td>
-                  <td>Age</td>
-                  <td>City</td>
-                  <td>Gender</td>
+                  <td>ID
+                    <br></br>
+                    <button id="sort-button" onClick={handleSortAscClick}>&uarr;</button>
+                    <button id="sort-button" onClick={handleSortDescClick}>&darr;</button>
+                  </td>
+                  <td>Name
+                  <br></br>
+                    <button id="sort-button" onClick={handleSortStrAscClick}>&uarr;</button>
+                    <button id="sort-button" onClick={handleSortStrDescClick}>&darr;</button>
+                  </td>
+                  <td>Age
+                  <br></br>
+                    <button id="sort-button" onClick={handleSortAscClick}>&uarr;</button>
+                    <button id="sort-button" onClick={handleSortDescClick}>&darr;</button>
+                  </td>
+                  <td>City
+                  <br></br>
+                    <button id="sort-button" onClick={handleSortStrAscClick}>&uarr;</button>
+                    <button id="sort-button" onClick={handleSortStrDescClick}>&darr;</button>
+                  </td>
+                  <td>Gender
+                  <br></br>
+                    <button id="sort-button" onClick={handleSortStrAscClick}>&uarr;</button>
+                    <button id="sort-button" onClick={handleSortStrDescClick}>&darr;</button>
+                  </td>
                   <td>Edit</td>
                 </tr>
               </thead>

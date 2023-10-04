@@ -42,6 +42,7 @@ class App extends Component {
   handleCloseClick = () => {
     this.setState({
       isTableVisible: false,
+      isPopupVisible: false
     });
   };
 
@@ -114,6 +115,7 @@ class App extends Component {
               newData={newData}
               handleChange={this.handleChange}
               handleSubmit={this.handleSubmit}
+              handleCloseClick={this.handleCloseClick}
             />
           </>
         )}

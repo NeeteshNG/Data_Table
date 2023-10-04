@@ -2,9 +2,10 @@ import React, {Component} from "react";
 
 class Form extends Component{
     render () {
-    const {newData, handleChange, handleSubmit} = this.props;
+    const {newData, handleChange, handleSubmit, handleCloseClick} = this.props;
     return (
         <div className="modal-overlay">
+          <button id="form-close" href="/" onClick={handleCloseClick}>X</button>
           <form id="formStyle" onSubmit={handleSubmit}>
             <label>Name :-- <br></br>
               <input 

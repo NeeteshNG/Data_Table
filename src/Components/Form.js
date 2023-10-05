@@ -9,7 +9,6 @@ class Form extends Component{
           <form id="formStyle" onSubmit={handleSubmit}>
             <label>Name :-- <br></br>
               <input 
-                id="inputBox"
                 type='text'
                 placeholder='Enter Your Name : '
                 name="name"
@@ -19,7 +18,6 @@ class Form extends Component{
               </label>
             <label>Age :-- <br></br>
               <input 
-                id="inputBox"
                 type='number'
                 placeholder='Enter Your Age'
                 name="age"
@@ -29,7 +27,6 @@ class Form extends Component{
             </label>
             <label>City :-- <br></br>
               <input 
-                id="inputBox"
                 type='text'
                 placeholder='Enter City'
                 name="city"

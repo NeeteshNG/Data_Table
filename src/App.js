@@ -112,7 +112,6 @@ class App extends Component {
 
     return (
       <div className="App">
-        <h1>Testing</h1>
         <button className="buttons" onClick={this.handleShowClick}>
           Show Table
         </button>

@@ -13,6 +13,7 @@ class App extends Component {
       isPopupVisible: false,
       isTableVisible: false,
       newData: { id: null, name: "", age: "", city: "", gender: "" },
+      validationErrors : { name : "", age : "", city : ""}
     };
   
   handleAddClick = () => {
@@ -38,7 +39,8 @@ class App extends Component {
   handleCloseClick = () => {
     this.setState({
       isTableVisible: false,
-      isPopupVisible: false
+      isPopupVisible: false,
+      validationErrors : {}
     });
   };
 
@@ -88,12 +90,45 @@ class App extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const { newData, fullData } = this.state;
-    if (newData.name && newData.age && newData.city && newData.gender !== "") {
+
+    // Validation of Form Inputs
+    const errors = {};
+
+    if (!/^[a-zA-Z]+$/.test(newData.name)){
+      errors.name = "*Name should contain only Alphabetical Characters.";
+    }
+
+    if (newData.name.length > 20){
+      errors.name = "*Name is Too Long to be Real.";
+    }
+
+    if (isNaN(newData.age)){
+      errors.age = "*Age should be a number.";
+    }
+
+    if (newData.age < 0){
+      errors.age = "*Age cannot be Negative.";
+    }
+
+    if (newData.age > 150){
+      errors.age = "*Age is too High to be Real.";
+    }
+
+    if (!/^[a-zA-Z]+$/.test(newData.city)){
+      errors.city= "*City should contain only Alphabetical Characters.";
+    }
+
+    if (newData.city.length > 20){
+      errors.city = "*City's Characters are Too Long to be Real.";
+    }
+
+    if (Object.keys(errors).length === 0) {
       if (newData.id === null) {
         const newId = fullData.length + 1;
         this.setState((prevState) => ({
           fullData: [...prevState.fullData, { ...newData, id: newId }],
           isPopupVisible: false,
+          validationErrors : {}
         }));
       } else {
         const updatedData = fullData.map((person) =>
@@ -104,6 +139,11 @@ class App extends Component {
           isPopupVisible: false,
         });
       }
+    }else {
+      this.setState((prevState) => ({
+        ...prevState,
+        validationErrors: errors,
+      }));
     }
   };
 
@@ -144,6 +184,7 @@ class App extends Component {
               handleChange={this.handleChange}
               handleSubmit={this.handleSubmit}
               handleCloseClick={this.handleCloseClick}
+              validationErrors={this.state.validationErrors}
             />
           </>
         )}

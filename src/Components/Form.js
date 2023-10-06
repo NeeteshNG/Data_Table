@@ -2,7 +2,7 @@ import React, {Component} from "react";
 
 class Form extends Component{
     render () {
-    const {newData, handleChange, handleSubmit, handleCloseClick} = this.props;
+    const {newData, handleChange, handleSubmit, handleCloseClick, validationErrors} = this.props;
     return (
         <div className="modal-overlay">
           <button id="form-close" href="/" onClick={handleCloseClick}>X</button>
@@ -14,16 +14,28 @@ class Form extends Component{
                 name="name"
                 value={newData.name}
                 onChange={handleChange}
-                required/>
+                required
+                style={{
+                  borderColor: validationErrors.name ? "red" : "",
+                }}/>
+                {validationErrors.name && (
+                  <div className="error">{validationErrors.name}</div>
+                )}
               </label>
             <label>Age :-- <br></br>
               <input 
-                type='number'
+                type='text'
                 placeholder='Enter Your Age'
                 name="age"
                 value={newData.age}
                 onChange={handleChange}
-                required/>
+                required
+                style={{
+                  borderColor : validationErrors.age ? "red" : "",
+                }}/>
+                {validationErrors.age && (
+                  <div className="error">{validationErrors.age}</div>
+                )}
             </label>
             <label>City :-- <br></br>
               <input 
@@ -32,7 +44,13 @@ class Form extends Component{
                 name="city"
                 value={newData.city}
                 onChange={handleChange}
-                required/>
+                required
+                style={{
+                  borderColor : validationErrors.city ? "red" : "",
+                }}/>
+                {validationErrors.city && (
+                  <div className="error">{validationErrors.city}</div>
+                )}
             </label>
             <label>Gender :-- <br></br>
             <select name="gender" value={newData.gender} onChange={handleChange} required>

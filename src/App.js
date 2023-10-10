@@ -2,6 +2,7 @@ import "./App.css";
 import React, { Component } from "react";
 import Table from "./Components/Table";
 import Form from "./Components/Form";
+import Navbar from "./Components/Navbar";
 
 class App extends Component {
   state = {
@@ -152,9 +153,10 @@ class App extends Component {
 
     return (
       <div className="App">
-        <button className="buttons" onClick={this.handleShowClick}>
-          Show Table
-        </button>
+         <Navbar
+          handleAddClick={this.handleAddClick}
+          handleShowClick={this.handleShowClick}
+         />
 
         {isTableVisible && (
           <>
@@ -172,10 +174,6 @@ class App extends Component {
             />
           </>
         )}
-
-        <button className="buttons" onClick={this.handleAddClick}>
-          Sign Up
-        </button>
 
         {isPopupVisible && (
           <>

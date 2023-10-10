@@ -9,7 +9,7 @@
   margin-left: 225px;
 }
 #formStyle {
-  background-color: lavender;
+  background-color: lightblue;
   display : flex;
   flex-wrap: wrap;
   flex-direction : row;
@@ -48,7 +48,7 @@
 #tableContainer thead td {
   font-size: larger;
   font-weight: bolder;
-  background-color: lavender;
+  background-color: lightblue;
   border: 3px solid #0095ff;
   padding: 10px;
 }
@@ -130,7 +130,7 @@
 #form-close {
   border-radius: 10px; 
   border-color: #0095ff;
-  background-color: lavender;
+  background-color: lightblue;
   color: #0095ff;
   left       : 50%;
   top        : 50%;
@@ -140,9 +140,9 @@
 }
 
 #form-close:hover{
-  border-color: lavender;
+  border-color: lightblue;
   background-color: #0095ff;
-  color: lavender;
+  color: lightblue;
 }
 
 
@@ -161,7 +161,7 @@
 
 #sort-button:hover,
 #sort-button:focus {
-  background-color: lavender;
+  background-color: lightblue;
   border-color: #0095ff;
   color: #0095ff;
 }
@@ -182,4 +182,41 @@
   color: red;
   border-color: red;
   font-family: 'Young Serif', serif;
+}
+
+.navbar {
+  background-color: lightblue;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.navbar-buttons {
+  background-color: #0095ff;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  box-shadow: rgba(255, 255, 255, .4) 0 1px 0 0 inset;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system,system-ui,"Segoe UI","Liberation Sans",sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.15385;
+  outline: none;
+  padding: 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  white-space: nowrap;
+}
+
+.navbar-buttons:hover {
+  text-decoration: underline;
 }

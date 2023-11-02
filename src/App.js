@@ -6,17 +6,23 @@ import Navbar from "./Components/Navbar";
 
 class App extends Component {
   state = {
-      fullData: [
-        { id: 1, name: "Neetesh", age: "22", city: "Ashokanagar", gender: "Male" },
-        { id: 2, name: "Akash", age: "25", city: "Bhopal", gender: "Male" },
-        { id: 3, name: "Rupa", age: "32", city: "Mumbai", gender: "Female" },
-      ],
-      isPopupVisible: false,
-      isTableVisible: false,
-      newData: { id: null, name: "", age: "", city: "", gender: "" },
-      validationErrors : { name : "", age : "", city : ""}
-    };
-  
+    fullData: [
+      {
+        id: 1,
+        name: "Neetesh",
+        age: "22",
+        city: "Ashokanagar",
+        gender: "Male",
+      },
+      { id: 2, name: "Akash", age: "25", city: "Bhopal", gender: "Male" },
+      { id: 3, name: "Rupa", age: "32", city: "Mumbai", gender: "Female" },
+    ],
+    isPopupVisible: false,
+    isTableVisible: false,
+    newData: { id: null, name: "", age: "", city: "", gender: "" },
+    validationErrors: { name: "", age: "", city: "" },
+  };
+
   handleAddClick = () => {
     this.setState({
       isPopupVisible: true,
@@ -41,12 +47,14 @@ class App extends Component {
     this.setState({
       isTableVisible: false,
       isPopupVisible: false,
-      validationErrors : {}
+      validationErrors: {},
     });
   };
 
   handleDeleteClick = (id) => {
-    const updatedData = this.state.fullData.filter((person) => person.id !== id);
+    const updatedData = this.state.fullData.filter(
+      (person) => person.id !== id
+    );
     this.setState({
       fullData: updatedData,
     });
@@ -57,28 +65,32 @@ class App extends Component {
     this.setState({
       fullData: numAscending,
     });
-  }
+  };
 
   handleSortDescClick = () => {
     const numDescending = [...this.state.fullData].sort((a, b) => b.id - a.id);
     this.setState({
       fullData: numDescending,
     });
-  }
+  };
 
   handleSortStrAscClick = () => {
-    const strAscending = [...this.state.fullData].sort((a, b) => a.name > b.name ? 1 : -1,);
+    const strAscending = [...this.state.fullData].sort((a, b) =>
+      a.name > b.name ? 1 : -1
+    );
     this.setState({
       fullData: strAscending,
     });
-  }
+  };
 
   handleSortStrDescClick = () => {
-    const strDescending = [...this.state.fullData].sort((a, b) => a.name > b.name ? -1 : 1,);
+    const strDescending = [...this.state.fullData].sort((a, b) =>
+      a.name > b.name ? -1 : 1
+    );
     this.setState({
       fullData: strDescending,
     });
-  }
+  };
 
   handleChange = (event) => {
     const name = event.target.name;
@@ -95,31 +107,31 @@ class App extends Component {
     // Validation of Form Inputs
     const errors = {};
 
-    if (!/^[a-zA-Z]+$/.test(newData.name)){
+    if (!/^[a-zA-Z]+$/.test(newData.name)) {
       errors.name = "*Name should contain only Alphabetical Characters.";
     }
 
-    if (newData.name.length > 20){
+    if (newData.name.length > 20) {
       errors.name = "*Name is Too Long to be Real.";
     }
 
-    if (isNaN(newData.age)){
+    if (isNaN(newData.age)) {
       errors.age = "*Age should be a number.";
     }
 
-    if (newData.age < 0){
+    if (newData.age < 0) {
       errors.age = "*Age cannot be Negative.";
     }
 
-    if (newData.age > 150){
+    if (newData.age > 150) {
       errors.age = "*Age is too High to be Real.";
     }
 
-    if (!/^[a-zA-Z]+$/.test(newData.city)){
-      errors.city= "*City should contain only Alphabetical Characters.";
+    if (!/^[a-zA-Z]+$/.test(newData.city)) {
+      errors.city = "*City should contain only Alphabetical Characters.";
     }
 
-    if (newData.city.length > 20){
+    if (newData.city.length > 20) {
       errors.city = "*City's Characters are Too Long to be Real.";
     }
 
@@ -129,7 +141,7 @@ class App extends Component {
         this.setState((prevState) => ({
           fullData: [...prevState.fullData, { ...newData, id: newId }],
           isPopupVisible: false,
-          validationErrors : {}
+          validationErrors: {},
         }));
       } else {
         const updatedData = fullData.map((person) =>
@@ -140,7 +152,7 @@ class App extends Component {
           isPopupVisible: false,
         });
       }
-    }else {
+    } else {
       this.setState((prevState) => ({
         ...prevState,
         validationErrors: errors,
@@ -153,10 +165,10 @@ class App extends Component {
 
     return (
       <div className="App">
-         <Navbar
+        <Navbar
           handleAddClick={this.handleAddClick}
           handleShowClick={this.handleShowClick}
-         />
+        />
 
         {isTableVisible && (
           <>
